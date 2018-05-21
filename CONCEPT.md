@@ -2,7 +2,7 @@ Top Down Heist
 ==============
 
 ### Summary:
-- Available at https://heist.indietasten.net
+- Available at https://play.indietasten.net
 - Co-op game.
 - In-Browser
 - Top Down view
