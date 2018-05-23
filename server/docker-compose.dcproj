@@ -3,7 +3,7 @@
   <PropertyGroup Label="Globals">
     <ProjectVersion>2.1</ProjectVersion>
     <DockerTargetOS>Linux</DockerTargetOS>
-    <ProjectGuid>81fd188f-689d-45c3-bbdc-33dacbdc75e6</ProjectGuid>
+    <ProjectGuid>80fbcba8-29f7-4465-9553-ad3ea4455d27</ProjectGuid>
     <DockerLaunchAction>LaunchBrowser</DockerLaunchAction>
     <DockerServiceUrl>{Scheme}://localhost:{ServicePort}</DockerServiceUrl>
     <DockerServiceName>topdownheist.server</DockerServiceName>

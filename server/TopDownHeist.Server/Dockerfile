@@ -4,6 +4,7 @@ EXPOSE 80
 
 FROM microsoft/aspnetcore-build:2.0 AS build
 WORKDIR /src
+COPY *.sln ./
 COPY TopDownHeist.Server/TopDownHeist.Server.csproj TopDownHeist.Server/
 RUN dotnet restore TopDownHeist.Server/TopDownHeist.Server.csproj
 COPY . .
