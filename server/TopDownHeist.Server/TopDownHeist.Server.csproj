@@ -10,8 +10,4 @@
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.0.3" />
   </ItemGroup>
 
-  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
-    <Exec Command="COPY ..\..\index.html .\wwwroot\index.html" />
-  </Target>
-
 </Project>
