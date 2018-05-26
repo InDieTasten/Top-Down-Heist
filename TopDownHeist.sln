@@ -3,18 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27703.2018
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TopDownHeist.Server", "TopDownHeist.Server\TopDownHeist.Server.csproj", "{633417BE-35A3-4CF2-A527-CBEB4673443E}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{1045C2C9-4381-42D8-904D-C32D5A3D0FF5}"
 	ProjectSection(SolutionItems) = preProject
 		.dockerignore = .dockerignore
-		..\.gitignore = ..\.gitignore
+		.gitignore = .gitignore
 	EndProjectSection
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Client", "Client", "{83D8D922-94B8-4FB3-B6C0-D8FA4FB1247D}"
-	ProjectSection(SolutionItems) = preProject
-		..\index.html = ..\index.html
-	EndProjectSection
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TopDownHeist", "TopDownHeist\TopDownHeist.csproj", "{1191AA52-A83A-4C07-9BF1-DEA6D2CAAC67}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -22,10 +17,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{633417BE-35A3-4CF2-A527-CBEB4673443E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{633417BE-35A3-4CF2-A527-CBEB4673443E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{633417BE-35A3-4CF2-A527-CBEB4673443E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{633417BE-35A3-4CF2-A527-CBEB4673443E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1191AA52-A83A-4C07-9BF1-DEA6D2CAAC67}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1191AA52-A83A-4C07-9BF1-DEA6D2CAAC67}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1191AA52-A83A-4C07-9BF1-DEA6D2CAAC67}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1191AA52-A83A-4C07-9BF1-DEA6D2CAAC67}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
