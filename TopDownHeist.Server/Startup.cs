@@ -27,8 +27,8 @@ namespace TopDownHeist.Server
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseDefaultFiles("/dev");
-            app.UseStaticFiles("/dev");
+            app.UseDefaultFiles();
+            app.UseStaticFiles();
 
             app.UseMvcWithDefaultRoute();
         }
