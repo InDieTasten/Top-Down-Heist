@@ -8,12 +8,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{1045C2C9-4381-42D8-904D-C32D5A3D0FF5}"
 	ProjectSection(SolutionItems) = preProject
 		.dockerignore = .dockerignore
-		..\.gitignore = ..\.gitignore
-	EndProjectSection
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Client", "Client", "{83D8D922-94B8-4FB3-B6C0-D8FA4FB1247D}"
-	ProjectSection(SolutionItems) = preProject
-		..\index.html = ..\index.html
+		.gitignore = .gitignore
 	EndProjectSection
 EndProject
 Global
