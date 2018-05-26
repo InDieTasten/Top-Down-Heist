@@ -6,11 +6,11 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace TopDownHeist.Server.Controllers
 {
-    public class TestController : Controller
+    public class PingController : Controller
     {
         public IActionResult Index()
         {
-            return Json(new { Message = "Magic just happened" });
+            return Json(new { Message = "Pong!" });
         }
     }
 }
