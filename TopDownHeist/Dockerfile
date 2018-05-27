@@ -1,4 +1,4 @@
-FROM microsoft/aspnetcore-build:2.1.300-preview1 AS build-env
+FROM microsoft/dotnet:2.1-sdk AS build
 WORKDIR /app
 
 # Copy csproj and restore as distinct layers
@@ -10,8 +10,8 @@ COPY . ./
 RUN dotnet publish -c Release -o out
 
 # Build runtime image
-FROM microsoft/aspnetcore:2.1.0-preview1
+FROM microsoft/dotnet:2.1-aspnetcore-runtime AS runtime
 WORKDIR /app
-COPY --from=build-env /app/out .
+COPY --from=build /app/out .
 EXPOSE 80
-ENTRYPOINT ["dotnet", "TopDownHeist.Server.dll"]
+ENTRYPOINT ["dotnet", "TopDownHeist.dll"]
