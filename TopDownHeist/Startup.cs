@@ -16,7 +16,10 @@ namespace TopDownHeist.Server
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvcCore()
-                .AddJsonFormatters();
+                .AddJsonFormatters()
+                .AddRazorViewEngine();
+
+            services.AddSignalR();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -27,6 +30,10 @@ namespace TopDownHeist.Server
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseSignalR(routes =>
+            {
+                routes.MapHub<ChatHub>("/chathub");
+            });
             app.UseDefaultFiles();
             app.UseStaticFiles();
 
