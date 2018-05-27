@@ -11,3 +11,5 @@ bin
 # Front End generated files
 .js
 .css
+
+node_modules
