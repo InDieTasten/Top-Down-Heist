@@ -10,8 +10,6 @@
     <meta name="viewport" content="width=device-width" />
     <title>Top Down Heist</title>
 
-    <script src="~/lib/signalr/signalr.min.js"></script>
-
 </head>
 <body>
 
@@ -21,30 +19,6 @@
 
     <input id="userInput" /><input id="messageInput" /><button id="sendButton">Send</button>
 
-    <script>
-        (function () {
-            const connection = new signalR.HubConnectionBuilder()
-                .withUrl("/chatHub")
-                .configureLogging(signalR.LogLevel.Debug)
-                .build();
-
-            connection.start().catch(err => console.error(err.ToString()));
-            connection.on("ReceiveMessage", (user, message) => {
-                const encodedMsg = user + " says " + message;
-                const li = document.createElement("li");
-                li.textContent = encodedMsg;
-                document.getElementById("messagesList").appendChild(li);
-            });
-
-            document.getElementById("sendButton").addEventListener("click", event => {
-                const user = document.getElementById("userInput").value;
-                const message = document.getElementById("messageInput").value;
-                connection.invoke("SendMessage", user, message).catch(err => console.error(err.ToString()));
-                event.preventDefault();
-            });
-        })();
-
-    </script>
-
+    <script src="~/js/game.bundle.js"></script>
 </body>
 </html>

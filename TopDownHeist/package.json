@@ -1,15 +1,24 @@
 {
-  "name": "TopDownHeist",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "@aspnet/signalr": "^1.0.0-rc1-update1"
-  }
+    "name": "top-down-heist",
+    "private": true,
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "build": "webpack --mode development",
+        "watch": "webpack --watch --mode development"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "@aspnet/signalr": "^1.0.0-rc1-update1"
+    },
+    "devDependencies": {
+        "@types/signalr": "^2.2.35",
+        "typescript": "^2.8.3",
+        "ts-loader": "^4.3.0",
+        "webpack": "^4.10.2",
+        "webpack-cli": "^2.1.4"
+    }
 }
