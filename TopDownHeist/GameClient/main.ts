@@ -1,6 +1,9 @@
 ﻿import { HubConnectionBuilder, LogLevel } from "@aspnet/signalr";
+import * as PIXI from "pixi.js";
 
 (function () {
+
+    const application = new PIXI.Application();
 
     const connection = new HubConnectionBuilder()
         .withUrl("/chatHub")
