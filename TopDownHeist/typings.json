@@ -1,0 +1,5 @@
+{
+  "globalDependencies": {
+    "import-png": "file:./GameClient/custom_typings/import-png.d.ts"
+  }
+}
