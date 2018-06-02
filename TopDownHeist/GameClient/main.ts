@@ -1,31 +1,31 @@
 ﻿import * as PIXI from "pixi.js";
-import * as url from './images/player-shotgun.png';
+import * as playerTexture from './images/player-shotgun.png';
 
-(function () {
 
-    let type = "WebGL";
+let type = "WebGL";
 
-    if (!PIXI.utils.isWebGLSupported()) {
-        type = "canvas";
-    }
+if (!PIXI.utils.isWebGLSupported()) {
+    type = "canvas";
+}
 
-    // Create a Pixi Application
-    let app = new PIXI.Application();
+// Create a Pixi Application
+let app = new PIXI.Application();
 
-    // Set display to fill browser window
-    app.renderer.view.style.position = "absolute";
-    app.renderer.view.style.display = "block";
-    app.renderer.autoResize = true;
-    app.renderer.resize(window.innerWidth, window.innerHeight);
+// Set display to fill browser window
+app.renderer.view.style.position = "absolute";
+app.renderer.view.style.display = "block";
+app.renderer.autoResize = true;
+app.renderer.resize(window.innerWidth, window.innerHeight);
 
-    // Add the canvas that Pixi automatically
-    // created for you to the HTML document
-    document.body.appendChild(app.view);
+// Add the canvas that Pixi automatically
+// created for you to the HTML document
+document.body.appendChild(app.view);
 
-    PIXI.loader.add(url).load(setup);
+PIXI.loader.add(playerTexture).load(() => {
 
-    function setup() {
+    let playerSprite = new PIXI.Sprite(
+        PIXI.loader.resources[playerTexture].texture
+    );
 
-    }
-
-})();
+    app.stage.addChild(playerSprite);
+});
