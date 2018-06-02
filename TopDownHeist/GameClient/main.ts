@@ -1,28 +1,31 @@
-﻿import { HubConnectionBuilder, LogLevel } from "@aspnet/signalr";
-import * as PIXI from "pixi.js";
+﻿import * as PIXI from "pixi.js";
+import * as url from './images/player-shotgun.png';
 
 (function () {
 
-    const application = new PIXI.Application();
+    let type = "WebGL";
 
-    const connection = new HubConnectionBuilder()
-        .withUrl("/chatHub")
-        .configureLogging(LogLevel.Debug)
-        .build();
+    if (!PIXI.utils.isWebGLSupported()) {
+        type = "canvas";
+    }
 
-    connection.start().catch(err => console.error(err.ToString()));
+    // Create a Pixi Application
+    let app = new PIXI.Application();
 
-    connection.on("ReceiveMessage", (user, message : string) => {
-        const encodedMsg = user + " says " + message;
-        const li = document.createElement("li");
-        li.textContent = encodedMsg;
-        document.getElementById("messagesList").appendChild(li);
-    });
+    // Set display to fill browser window
+    app.renderer.view.style.position = "absolute";
+    app.renderer.view.style.display = "block";
+    app.renderer.autoResize = true;
+    app.renderer.resize(window.innerWidth, window.innerHeight);
 
-    document.getElementById("sendButton").addEventListener("click", event => {
-        const user = (<HTMLInputElement>document.getElementById("userInput")).value;
-        const message = (<HTMLInputElement>document.getElementById("messageInput")).value;
-        connection.invoke("SendMessage", user, message).catch(err => console.error(err.ToString()));
-        event.preventDefault();
-    });
+    // Add the canvas that Pixi automatically
+    // created for you to the HTML document
+    document.body.appendChild(app.view);
+
+    PIXI.loader.add(url).load(setup);
+
+    function setup() {
+
+    }
+
 })();
