@@ -16,10 +16,11 @@
         "pixi.js": "^4.8.0"
     },
     "devDependencies": {
-        "@types/signalr": "^2.2.35",
         "@types/pixi.js": "^4.7.5",
-        "typescript": "^2.8.3",
+        "@types/signalr": "^2.2.35",
+        "file-loader": "^1.1.11",
         "ts-loader": "^4.3.0",
+        "typescript": "^2.8.3",
         "webpack": "^4.10.2",
         "webpack-cli": "^2.1.4"
     }
