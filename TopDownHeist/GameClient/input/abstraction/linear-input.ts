@@ -1,5 +1,4 @@
-﻿import { Vector2 } from "../../helpers/vector";
-
+﻿
 export interface IAbsoluteLinearInput {
     /*
      * Returns the linear input in a range of 0 to 1
