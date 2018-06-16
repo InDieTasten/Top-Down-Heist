@@ -7,15 +7,15 @@ export class CharacterInput {
 
     constructor() {
 
-        // Arrow key movement
+        // WASD key movement
         this.movement = new CombinedVectorInput(
             new CombinedLinearInput(
-                new KeyInput(39), //right
-                new KeyInput(37) //left
+                new KeyInput(68), //right
+                new KeyInput(65) //left
             ),
             new CombinedLinearInput(
-                new KeyInput(40), // down
-                new KeyInput(39) // up
+                new KeyInput(83), // down
+                new KeyInput(87) // up
             )
         );
 

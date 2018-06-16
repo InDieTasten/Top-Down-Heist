@@ -31,4 +31,13 @@ PIXI.loader.add(playerTexture).load(() => {
     const playerInput = new CharacterInput();
 
     app.stage.addChild(playerSprite);
+    app.ticker.add(gameLoop);
+
+    function gameLoop(delta: number) {
+        const playerMovementVector = playerInput.movement.getVector();
+
+        playerSprite.x += playerMovementVector.x * delta * 5;
+        playerSprite.y += playerMovementVector.y * delta * 5;
+    }
 });
+
