@@ -7,12 +7,34 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <None Remove="GameClient\helpers\vector.ts" />
+      <None Remove="GameClient\input\abstraction\heading-input.ts" />
+      <None Remove="GameClient\input\abstraction\linear-input.ts" />
+      <None Remove="GameClient\input\abstraction\vector-input.ts" />
+      <None Remove="GameClient\input\character-input.ts" />
+      <None Remove="GameClient\input\combined-input.ts" />
+      <None Remove="GameClient\input\keyboard\keyboard-input.ts" />
+    </ItemGroup>
+
+    <ItemGroup>
         <PackageReference Include="Microsoft.AspNetCore.All" Version="2.1.0" />
         <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.0" />
     </ItemGroup>
 
     <ItemGroup>
+      <Folder Include="GameClient\input\mouse\" />
+      <Folder Include="GameClient\input\gamepad\" />
       <Folder Include="wwwroot\" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <TypeScriptCompile Include="GameClient\helpers\vector.ts" />
+      <TypeScriptCompile Include="GameClient\input\abstraction\linear-input.ts" />
+      <TypeScriptCompile Include="GameClient\input\abstraction\heading-input.ts" />
+      <TypeScriptCompile Include="GameClient\input\abstraction\vector-input.ts" />
+      <TypeScriptCompile Include="GameClient\input\combined-input.ts" />
+      <TypeScriptCompile Include="GameClient\input\character-input.ts" />
+      <TypeScriptCompile Include="GameClient\input\keyboard\keyboard-input.ts" />
     </ItemGroup>
     
 </Project>
