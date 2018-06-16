@@ -5,12 +5,12 @@
     "description": "",
     "main": "index.js",
     "scripts": {
+        "start": "dotnet run",
         "build": "webpack --mode development",
         "watch": "webpack --watch --mode development"
     },
     "keywords": [],
-    "author": "",
-    "license": "ISC",
+    "author": "InDieTasten",
     "dependencies": {
         "@aspnet/signalr": "^1.0.0",
         "pixi.js": "^4.8.0"
