@@ -10,16 +10,16 @@ export class KeyInput implements IAbsoluteLinearInput {
         this.keyCode = keyCode;
         this.pressedState = false;
 
-        window.addEventListener("keydown", this.keyDownEventHandler);
-        window.addEventListener("keyup", this.keyUpEventHandler);
+        window.document.addEventListener("keydown", this.keyDownEventHandler, true);
+        window.document.addEventListener("keyup", this.keyUpEventHandler, true);
     }
 
-    private keyDownEventHandler(event: KeyboardEvent): void {
+    private keyDownEventHandler = (event: KeyboardEvent): void => {
         if (event.keyCode === this.keyCode) {
             this.pressedState = true;
         }
     }
-    private keyUpEventHandler(event: KeyboardEvent): void {
+    private keyUpEventHandler = (event: KeyboardEvent): void => {
         if (event.keyCode === this.keyCode) {
             this.pressedState = false;
         }
