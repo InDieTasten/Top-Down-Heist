@@ -1,6 +1,7 @@
 ﻿import * as PIXI from "pixi.js";
 import * as playerTexture from './images/player-shotgun.png';
 import { CharacterInput } from "./input/character-input";
+import { MouseMoveInput } from "./input/mouse/move-input";
 
 
 let type = "WebGL";
@@ -28,6 +29,8 @@ PIXI.loader.add(playerTexture).load(() => {
         PIXI.loader.resources[playerTexture].texture
     );
 
+    playerSprite.pivot.set(playerSprite.width / 2, playerSprite.height / 2);
+
     const playerInput = new CharacterInput();
 
     app.stage.addChild(playerSprite);
@@ -38,6 +41,8 @@ PIXI.loader.add(playerTexture).load(() => {
 
         playerSprite.x += playerMovementVector.x * delta * 5;
         playerSprite.y += playerMovementVector.y * delta * 5;
+
+        playerSprite.rotation = playerInput.heading.getHeading() + Math.PI/2;
     }
 });
 

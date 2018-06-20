@@ -27,8 +27,6 @@ export class KeyInput implements IAbsoluteLinearInput {
 
     getValue(): number {
         // + converts boolean to 0 or 1 number
-        const value: number = +this.pressedState;
-
         return +this.pressedState;
     }
 }
