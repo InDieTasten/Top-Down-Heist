@@ -1,13 +1,16 @@
 ﻿import * as PIXI from "pixi.js";
 import * as playerTexture from './images/player-shotgun.png';
 import { CharacterInput } from "./input/character-input";
-
+import { Container } from "inversify";
 
 let type = "WebGL";
 
 if (!PIXI.utils.isWebGLSupported()) {
     type = "canvas";
 }
+
+
+let container = new Container();
 
 // Create a Pixi Application
 let app = new PIXI.Application();

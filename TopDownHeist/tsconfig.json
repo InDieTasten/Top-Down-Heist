@@ -3,6 +3,10 @@
         "noImplicitAny": true,
         "removeComments": false,
         "target": "es5",
-        "sourceMap": true
+        "sourceMap": true,
+        "types": [ "reflect-metadata" ],
+        "lib": [ "es6", "dom" ],
+        "experimentalDecorators": true,
+        "emitDecoratorMetadata": true
     }
 }
