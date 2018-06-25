@@ -1,11 +1,12 @@
 ﻿import { IVectorInput } from "./abstraction/vector-input";
 import { IHeadingInput } from "./abstraction/heading-input";
-import { CombinedVectorInput, CombinedLinearInput } from "./combined-input";
-import { KeyInput } from "./keyboard/keyboard-input";
+import { CombinedVectorInput, CombinedLinearInput, TwoPointDelegateHeadingInput } from "./combined-input";
+import { KeyInput } from "./keyboard/key-input";
+import { Vector2 } from "../helpers/vector";
 
-export class CharacterInput {
+export class PlayerInput {
 
-    constructor() {
+    constructor(interactionManager: PIXI.interaction.InteractionManager, target: PIXI.DisplayObject) {
 
         // WASD key movement
         this.movement = new CombinedVectorInput(
@@ -19,6 +20,11 @@ export class CharacterInput {
             )
         );
 
+        // Mouse pointer heading
+        this.heading = new TwoPointDelegateHeadingInput(
+            () => target.getGlobalPosition(),
+            () => interactionManager.mouse.global
+        );
     }
 
     movement: IVectorInput;

@@ -1,7 +1,8 @@
 ﻿import * as PIXI from "pixi.js";
 import * as playerTexture from './images/player-shotgun.png';
-import { CharacterInput } from "./input/character-input";
 import { Container } from "inversify";
+import { Player } from "./player";
+import { GameWorld } from "./game-world";
 
 let type = "WebGL";
 
@@ -26,21 +27,18 @@ app.renderer.resize(window.innerWidth, window.innerHeight);
 document.body.appendChild(app.view);
 
 PIXI.loader.add(playerTexture).load(() => {
+    
+    const gameInteractionManager: PIXI.interaction.InteractionManager = app.renderer.plugins.interaction;
+    const gameWorld = new GameWorld();
+    const player = new Player(gameInteractionManager);
 
-    const playerSprite = new PIXI.Sprite(
-        PIXI.loader.resources[playerTexture].texture
-    );
+    gameWorld.addChild(player);
 
-    const playerInput = new CharacterInput();
-
-    app.stage.addChild(playerSprite);
+    app.stage.addChild(gameWorld);
     app.ticker.add(gameLoop);
 
     function gameLoop(delta: number) {
-        const playerMovementVector = playerInput.movement.getVector();
-
-        playerSprite.x += playerMovementVector.x * delta * 5;
-        playerSprite.y += playerMovementVector.y * delta * 5;
+        player.update(delta);
     }
 });
 

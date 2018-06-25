@@ -30,10 +30,10 @@ export class CombinedVectorInput implements IVectorInput {
     }
 
     getVector(): Vector2 {
-        return new Vector2(
-            this.xInput.getValue(),
-            this.yInput.getValue()
-        );
+        return {
+            x: this.xInput.getValue(),
+            y: this.yInput.getValue()
+        };
     }
 
 }
@@ -50,7 +50,13 @@ export class TwoPointDelegateHeadingInput implements IHeadingInput {
 
     getHeading(): number {
 
-        const diff = this.pointADelegate().subtract(this.pointBDelegate());
+        const pointA = this.pointADelegate();
+        const pointB = this.pointBDelegate();
+
+        const diff: Vector2 = {
+            x: pointA.x - pointB.x,
+            y: pointA.y - pointB.y
+        };
 
         const theta = Math.atan2(diff.y, diff.x);
 
