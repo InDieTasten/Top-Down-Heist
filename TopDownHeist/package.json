@@ -13,9 +13,7 @@
     "author": "InDieTasten",
     "dependencies": {
         "@aspnet/signalr": "^1.0.0",
-        "inversify": "^4.13.0",
-        "pixi.js": "^4.8.0",
-        "reflect-metadata": "^0.1.12"
+        "pixi.js": "^4.8.0"
     },
     "devDependencies": {
         "@types/pixi.js": "^4.7.5",
