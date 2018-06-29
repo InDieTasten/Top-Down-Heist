@@ -4,12 +4,23 @@ import { CombinedVectorInput, CombinedLinearInput, TwoPointDelegateHeadingInput 
 import { KeyInput } from "./keyboard/key-input";
 import { Vector2 } from "../helpers/vector";
 
-export class PlayerInput {
+export interface IPlayerInput {
+    movement: Vector2;
+    heading: number;
+}
+
+export class LocalPlayerInput implements IPlayerInput {
+
+    movement: Vector2;
+    heading: number;
+
+    private movementInput: IVectorInput;
+    private headingInput: IHeadingInput;
 
     constructor(interactionManager: PIXI.interaction.InteractionManager, target: PIXI.DisplayObject) {
 
         // WASD key movement
-        this.movement = new CombinedVectorInput(
+        this.movementInput = new CombinedVectorInput(
             new CombinedLinearInput(
                 new KeyInput(68), //right
                 new KeyInput(65) //left
@@ -21,13 +32,15 @@ export class PlayerInput {
         );
 
         // Mouse pointer heading
-        this.heading = new TwoPointDelegateHeadingInput(
+        this.headingInput = new TwoPointDelegateHeadingInput(
             () => target.getGlobalPosition(),
             () => interactionManager.mouse.global
         );
     }
 
-    movement: IVectorInput;
-    heading: IHeadingInput;
+    update(delta: number): void {
+        this.movement = this.movementInput.getVector();
+        this.heading = this.headingInput.getHeading();
+    }
 
 }

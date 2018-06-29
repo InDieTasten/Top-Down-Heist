@@ -1,11 +1,11 @@
-﻿import { PlayerInput } from "./input/player-input";
+﻿import { LocalPlayerInput } from "./input/player-input";
 
 import * as playerTexture from './images/player-shotgun.png';
 
 export class Player extends PIXI.Container {
 
     private sprite: PIXI.Sprite;
-    private input: PlayerInput;
+    private input: LocalPlayerInput;
 
     constructor(interactionManager: PIXI.interaction.InteractionManager) {
         super();
@@ -13,17 +13,17 @@ export class Player extends PIXI.Container {
         this.sprite = new PIXI.Sprite(PIXI.loader.resources[playerTexture].texture);
         this.addChild(this.sprite);
 
-        this.input = new PlayerInput(interactionManager, this);
+        this.input = new LocalPlayerInput(interactionManager, this);
 
         this.pivot.set(this.width / 2, this.height / 2);
     }
 
     public update(delta: number): void {
-        const playerMovementVector = this.input.movement.getVector();
 
-        this.x += playerMovementVector.x * delta * 10;
-        this.y += playerMovementVector.y * delta * 10;
+        this.input.update(delta);
 
-        this.rotation = this.input.heading.getHeading() + Math.PI / 2;
+        this.x += this.input.movement.x * delta * 10;
+        this.y += this.input.movement.y * delta * 10;
+        this.rotation = this.input.heading + Math.PI / 2;
     }
 }

@@ -1,7 +1,5 @@
-﻿import * as PIXI from "pixi.js";
+﻿import * as PIXI from 'pixi.js';
 import * as playerTexture from './images/player-shotgun.png';
-import { Container } from "inversify";
-import { Player } from "./player";
 import { GameWorld } from "./game-world";
 
 let type = "WebGL";
@@ -9,9 +7,6 @@ let type = "WebGL";
 if (!PIXI.utils.isWebGLSupported()) {
     type = "canvas";
 }
-
-
-let container = new Container();
 
 // Create a Pixi Application
 let app = new PIXI.Application();
@@ -29,16 +24,12 @@ document.body.appendChild(app.view);
 PIXI.loader.add(playerTexture).load(() => {
     
     const gameInteractionManager: PIXI.interaction.InteractionManager = app.renderer.plugins.interaction;
-    const gameWorld = new GameWorld();
-    const player = new Player(gameInteractionManager);
-
-    gameWorld.addChild(player);
-
+    const gameWorld = new GameWorld(gameInteractionManager);
     app.stage.addChild(gameWorld);
     app.ticker.add(gameLoop);
 
     function gameLoop(delta: number) {
-        player.update(delta);
+        gameWorld.update(delta);
     }
 });
 
