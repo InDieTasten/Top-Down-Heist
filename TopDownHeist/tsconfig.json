@@ -3,6 +3,7 @@
         "noImplicitAny": true,
         "removeComments": false,
         "target": "es3",
-        "sourceMap": true
+        "sourceMap": true,
+        "lib": ["es2015", "dom"]
     }
 }
