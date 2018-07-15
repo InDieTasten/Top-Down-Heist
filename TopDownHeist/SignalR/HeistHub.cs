@@ -9,8 +9,6 @@ using TopDownHeist.GameServer.Abstractions;
 
 public class HeistHub : Hub
 {
-    private readonly Random random = new Random();
-    private readonly CancellationTokenSource cancellationTokenSource = new CancellationTokenSource();
     private readonly ILogger<HeistHub> logger;
     private readonly IGameManager gameManager;
 
@@ -36,11 +34,5 @@ public class HeistHub : Hub
     {
         gameManager.LeaveLobby(Context.ConnectionId);
         await base.OnDisconnectedAsync(exception);
-    }
-
-    protected override void Dispose(bool disposing)
-    {
-        cancellationTokenSource.Cancel();
-        base.Dispose(disposing);
     }
 }
