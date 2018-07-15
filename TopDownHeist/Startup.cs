@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
+using TopDownHeist.GameServer.Abstractions;
+using TopDownHeist.GameServer.Managers;
 
 namespace TopDownHeist.Server
 {
@@ -18,6 +20,8 @@ namespace TopDownHeist.Server
             services.AddMvcCore()
                 .AddJsonFormatters()
                 .AddRazorViewEngine();
+
+            services.AddSingleton<IGameManager, GameManager>();
 
             services.AddSignalR();
         }
@@ -32,6 +36,7 @@ namespace TopDownHeist.Server
 
             app.UseSignalR(routes =>
             {
+                routes.MapHub<HeistHub>("/heistHub");
                 routes.MapHub<ChatHub>("/chathub");
             });
             app.UseDefaultFiles();
