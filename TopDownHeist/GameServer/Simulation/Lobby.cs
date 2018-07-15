@@ -36,6 +36,7 @@ namespace TopDownHeist.GameServer.Simulation
 
         public void Run()
         {
+            logger.LogInformation($"Lobby {LobbyName} launched.");
             keepRunning = true;
 
             while (keepRunning)
@@ -45,6 +46,8 @@ namespace TopDownHeist.GameServer.Simulation
                 // simulate world
                 // publish world updates
             }
+
+            logger.LogInformation($"Lobby {LobbyName} terminated.");
         }
 
         public void Stop() => keepRunning = false;
