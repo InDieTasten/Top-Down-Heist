@@ -23,6 +23,8 @@ namespace TopDownHeist.Server
 
             services.AddSingleton<IGameManager, GameManager>();
 
+            services.AddResponseCompression();
+
             services.AddSignalR();
         }
 
@@ -33,6 +35,8 @@ namespace TopDownHeist.Server
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            app.UseResponseCompression();
 
             app.UseSignalR(routes =>
             {
