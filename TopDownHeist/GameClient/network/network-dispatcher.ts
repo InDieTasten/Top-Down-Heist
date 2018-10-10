@@ -1,4 +1,4 @@
-﻿import { HubConnectionBuilder, LogLevel, HubConnection, JsonHubProtocol } from '@aspnet/signalr';
+﻿import { HubConnectionBuilder, LogLevel, HubConnection } from '@aspnet/signalr';
 
 export class NetworkDispatcher {
 
@@ -8,15 +8,26 @@ export class NetworkDispatcher {
         this.connection = new HubConnectionBuilder()
             .withUrl("/heistHub")
             .configureLogging(LogLevel.Debug)
-            .withHubProtocol(new JsonHubProtocol())
             .build();
 
         // register server-sent events
         this.connection.on("ping", this.onPing);
+        this.connection.on("gameUpdate", this.onGameUpdate)
     }
 
-    connect(): void {
-        this.connection.start();
+    async connect(): Promise<void> {
+        return await this.connection.start();
+    }
+
+    async disconnnect(): Promise<void> {
+        var promise = await this.connection.stop();
+        console.log("Disconnected from heistHub");
+
+        return promise;
+    }
+
+    private onGameUpdate = (message: any): void => {
+        console.log("Game Update received", message);
     }
 
     private onPing = (message: string): void => {
