@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
+using SignalR;
 using TopDownHeist.GameServer.Abstractions;
 using TopDownHeist.GameServer.Managers;
 
@@ -21,7 +22,7 @@ namespace TopDownHeist.Server
                 .AddJsonFormatters()
                 .AddRazorViewEngine();
 
-            services.AddSingleton<IGameManager, GameManager>();
+            services.AddSingleton<IGameLobbyManager, GameLobbyManager>();
 
             services.AddResponseCompression();
 
@@ -43,7 +44,9 @@ namespace TopDownHeist.Server
                 routes.MapHub<HeistHub>("/heistHub");
                 routes.MapHub<ChatHub>("/chathub");
             });
+
             app.UseDefaultFiles();
+
             app.UseStaticFiles();
 
             app.UseMvcWithDefaultRoute();

@@ -1,38 +1,45 @@
-﻿using Microsoft.AspNetCore.SignalR;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.Threading;
+﻿using System;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.SignalR;
+using Microsoft.Extensions.Logging;
 using TopDownHeist.GameServer.Abstractions;
 
-public class HeistHub : Hub
+namespace SignalR
 {
-    private readonly ILogger<HeistHub> logger;
-    private readonly IGameManager gameManager;
-
-    public HeistHub(ILogger<HeistHub> logger, IGameManager gameManager)
+    internal class HeistHub : Hub
     {
-        this.logger = logger;
-        this.gameManager = gameManager;
-    }
+        private readonly ILogger<HeistHub> _logger;
+        private readonly IGameLobbyManager _gameLobbyManager;
 
-    public Task Pong(string message)
-    {
-        logger.LogDebug("Pong received from {connectionId}.", Context.ConnectionId);
-        return Task.FromResult(0);
-    }
+        public HeistHub(ILogger<HeistHub> logger, IGameLobbyManager gameLobbyManager)
+        {
+            _logger = logger;
+            _gameLobbyManager = gameLobbyManager;
+        }
 
-    public override async Task OnConnectedAsync()
-    {
-        gameManager.CreateGameLobby(Context.ConnectionId, Context.ConnectionId, string.Empty);
-        await base.OnConnectedAsync();
-    }
 
-    public override async Task OnDisconnectedAsync(Exception exception)
-    {
-        gameManager.LeaveLobby(Context.ConnectionId);
-        await base.OnDisconnectedAsync(exception);
+        public async Task JoinGameServer(string lobbyName, string password)
+        {
+            if (await _gameLobbyManager.TryConnectToLobby(Context.ConnectionId, lobbyName, password))
+            {
+                _logger.LogInformation("Succesfully joined lobby");
+                await Clients.Client(Context.ConnectionId).SendAsync("joinLobby", true);
+            }
+            else
+            {
+                _logger.LogInformation("Failed attempt to join lobby {LobbyName}", lobbyName);
+                await Clients.Client(Context.ConnectionId).SendAsync("joinLobby", false);
+            }
+        }
+
+        public override async Task OnConnectedAsync()
+        {
+            await base.OnConnectedAsync();
+        }
+
+        public override async Task OnDisconnectedAsync(Exception exception)
+        {
+            await base.OnDisconnectedAsync(exception);
+        }
     }
 }
