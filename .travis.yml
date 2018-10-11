@@ -1,0 +1,12 @@
+language: csharp
+solution: TopDownHeist.sln
+mono: none
+dotnet: 2.1.403
+sudo: required
+
+services:
+ - docker
+script:
+ - docker build -t top-down-heist:this TopDownHeist
+ - dotnet build
+ - dotnet test TopDownHeist.IntegrationTests
