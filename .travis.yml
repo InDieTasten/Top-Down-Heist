@@ -7,6 +7,6 @@ sudo: required
 services:
  - docker
 script:
- - docker build -t top-down-heist:this .
+ - docker build -t top-down-heist:this TopDownHeist
  - dotnet build
  - dotnet test TopDownHeist.IntegrationTests
