@@ -8,7 +8,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		.dockerignore = .dockerignore
 		.editorconfig = .editorconfig
 		.gitignore = .gitignore
-		docker-compose.test.yml = docker-compose.test.yml
+		.travis.yml = .travis.yml
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TopDownHeist", "TopDownHeist\TopDownHeist.csproj", "{1191AA52-A83A-4C07-9BF1-DEA6D2CAAC67}"
