@@ -15,7 +15,7 @@ namespace TopDownHeist.GameServer.Managers
     /// <summary>
     /// Class for joinging and leaving lobbys, and multiplexing incoming frames to corresponding simulations
     /// </summary>
-    class LobbyManager : ILobbyManager
+    internal class LobbyManager : ILobbyManager
     {
         private readonly IServiceScopeFactory _serviceScopeFactory;
         private readonly ILogger<LobbyManager> _logger;
