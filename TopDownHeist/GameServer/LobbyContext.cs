@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Threading;
 using Microsoft.Extensions.Logging;
 
 namespace TopDownHeist.GameServer
@@ -18,7 +17,7 @@ namespace TopDownHeist.GameServer
 
         internal void Run()
         {
-            Thread.Sleep(TimeSpan.FromSeconds(10));
+            throw new NotImplementedException();
         }
     }
 }
