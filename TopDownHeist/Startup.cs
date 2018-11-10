@@ -22,7 +22,7 @@ namespace TopDownHeist.Server
                 .AddJsonFormatters()
                 .AddRazorViewEngine();
 
-            services.AddSingleton<IGameLobbyManager, GameLobbyManager>();
+            services.AddSingleton<ILobbyManager, LobbyManager>();
 
             services.AddResponseCompression();
 

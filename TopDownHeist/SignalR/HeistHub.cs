@@ -9,9 +9,9 @@ namespace SignalR
     internal class HeistHub : Hub
     {
         private readonly ILogger<HeistHub> _logger;
-        private readonly IGameLobbyManager _gameLobbyManager;
+        private readonly ILobbyManager _gameLobbyManager;
 
-        public HeistHub(ILogger<HeistHub> logger, IGameLobbyManager gameLobbyManager)
+        public HeistHub(ILogger<HeistHub> logger, ILobbyManager gameLobbyManager)
         {
             _logger = logger;
             _gameLobbyManager = gameLobbyManager;

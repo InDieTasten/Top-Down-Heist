@@ -16,16 +16,16 @@ namespace TopDownHeist.GameServer.Managers
     /// <summary>
     /// Class for joinging and leaving lobbys, and multiplexing incoming frames to corresponding simulations
     /// </summary>
-    class GameLobbyManager : IGameLobbyManager
+    class LobbyManager : ILobbyManager
     {
         private readonly IServiceScopeFactory _serviceScopeFactory;
-        private readonly ILogger<GameLobbyManager> _logger;
+        private readonly ILogger<LobbyManager> _logger;
         private readonly IHubContext<HeistHub> _heistHubContext;
         private readonly ConcurrentDictionary<string, GameLobby> _lobbies = new ConcurrentDictionary<string, GameLobby>();
 
-        public GameLobbyManager(
+        public LobbyManager(
             IServiceScopeFactory serviceScopeFactory,
-            ILogger<GameLobbyManager> logger,
+            ILogger<LobbyManager> logger,
             IHubContext<HeistHub> heistHubContext)
         {
             _serviceScopeFactory = serviceScopeFactory ?? throw new ArgumentNullException(nameof(serviceScopeFactory));
