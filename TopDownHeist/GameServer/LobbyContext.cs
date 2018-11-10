@@ -4,14 +4,14 @@ using Microsoft.Extensions.Logging;
 
 namespace TopDownHeist.GameServer
 {
-    internal class GameLobby
+    internal class LobbyContext
     {
-        private readonly ILogger<GameLobby> _logger;
+        private readonly ILogger<LobbyContext> _logger;
 
         public string Name { get; set; }
         public string Password { get; set; }
 
-        public GameLobby(ILogger<GameLobby> logger)
+        public LobbyContext(ILogger<LobbyContext> logger)
         {
             _logger = logger ?? throw new ArgumentNullException(nameof(logger));
         }

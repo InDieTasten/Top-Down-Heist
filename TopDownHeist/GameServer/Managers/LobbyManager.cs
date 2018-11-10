@@ -20,7 +20,7 @@ namespace TopDownHeist.GameServer.Managers
         private readonly IServiceScopeFactory _serviceScopeFactory;
         private readonly ILogger<LobbyManager> _logger;
         private readonly IHubContext<HeistHub> _heistHubContext;
-        private readonly ConcurrentDictionary<string, GameLobby> _lobbies = new ConcurrentDictionary<string, GameLobby>();
+        private readonly ConcurrentDictionary<string, LobbyContext> _lobbies = new ConcurrentDictionary<string, LobbyContext>();
 
         public LobbyManager(
             IServiceScopeFactory serviceScopeFactory,
@@ -58,7 +58,7 @@ namespace TopDownHeist.GameServer.Managers
             {
                 using (var lobbyScope = _serviceScopeFactory.CreateScope())
                 {
-                    var newLobby = ActivatorUtilities.CreateInstance<GameLobby>(lobbyScope.ServiceProvider);
+                    var newLobby = ActivatorUtilities.CreateInstance<LobbyContext>(lobbyScope.ServiceProvider);
 
                     newLobby.Name = lobbyName;
                     newLobby.Password = lobbyPassword;
