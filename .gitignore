@@ -16,3 +16,4 @@ node_modules
 *.js
 *.map
 /TopDownHeist/wwwroot
+/TopDownHeist.IntegrationTests/Properties/launchSettings.json
