@@ -38,7 +38,7 @@ namespace TopDownHeist.GameServer.Managers
             return _lobbies.Keys.ToArray();
         }
 
-        public void CreateGameLobby(string lobbyName, string lobbyPassword)
+        public void CreateLobby(string lobbyName, string lobbyPassword)
         {
             if (string.IsNullOrEmpty(lobbyName))
             {
