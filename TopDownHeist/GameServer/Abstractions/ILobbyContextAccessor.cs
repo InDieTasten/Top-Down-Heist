@@ -2,6 +2,6 @@
 {
     internal interface ILobbyContextAccessor
     {
-        ILobbyContext LobbyContext { get; }
+        ILobbyContext LobbyContext { get; set; }
     }
 }
