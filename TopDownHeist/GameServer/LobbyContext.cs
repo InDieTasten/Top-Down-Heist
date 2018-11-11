@@ -1,10 +1,11 @@
 ﻿using System;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using TopDownHeist.GameServer.Abstractions;
 
 namespace TopDownHeist.GameServer
 {
-    internal class LobbyContext
+    internal class LobbyContext : ILobbyContext
     {
         private readonly ILogger<LobbyContext> _logger;
 
@@ -18,7 +19,7 @@ namespace TopDownHeist.GameServer
             _logger = LobbyServices.GetRequiredService<ILogger<LobbyContext>>();
         }
 
-        internal void Run()
+        public void Run()
         {
             throw new NotImplementedException();
         }
