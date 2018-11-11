@@ -58,10 +58,11 @@ namespace TopDownHeist.GameServer.Managers
             {
                 using (var lobbyScope = _serviceScopeFactory.CreateScope())
                 {
-                    var newLobby = ActivatorUtilities.CreateInstance<LobbyContext>(lobbyScope.ServiceProvider);
-
-                    newLobby.Name = lobbyName;
-                    newLobby.Password = lobbyPassword;
+                    var newLobby = new LobbyContext(lobbyScope.ServiceProvider)
+                    {
+                        Name = lobbyName,
+                        Password = lobbyPassword
+                    };
 
                     if (_lobbies.TryAdd(lobbyName, newLobby))
                     {

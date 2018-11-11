@@ -1,4 +1,5 @@
 ﻿using System;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 
 namespace TopDownHeist.GameServer
@@ -9,10 +10,12 @@ namespace TopDownHeist.GameServer
 
         public string Name { get; set; }
         public string Password { get; set; }
+        public IServiceProvider LobbyServices { get; private set; }
 
-        public LobbyContext(ILogger<LobbyContext> logger)
+        public LobbyContext(IServiceProvider serviceProvider)
         {
-            _logger = logger ?? throw new ArgumentNullException(nameof(logger));
+            LobbyServices = serviceProvider ?? throw new ArgumentNullException(nameof(serviceProvider));
+            _logger = LobbyServices.GetRequiredService<ILogger<LobbyContext>>();
         }
 
         internal void Run()
