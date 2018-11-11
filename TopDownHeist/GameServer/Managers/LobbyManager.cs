@@ -63,10 +63,12 @@ namespace TopDownHeist.GameServer.Managers
                         Name = lobbyName,
                         Password = lobbyPassword
                     };
+                    var contextAccessor = lobbyScope.ServiceProvider.GetRequiredService<ILobbyContextAccessor>();
+                    contextAccessor.LobbyContext = newLobby;
 
                     if (_lobbies.TryAdd(lobbyName, newLobby))
                     {
-                        newLobby.Run();
+                        newLobby.Host();
                     }
                     else
                     {

@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using SignalR;
+using TopDownHeist.GameServer;
 using TopDownHeist.GameServer.Abstractions;
 using TopDownHeist.GameServer.Managers;
 
@@ -23,6 +19,7 @@ namespace TopDownHeist.Server
                 .AddRazorViewEngine();
 
             services.AddSingleton<ILobbyManager, LobbyManager>();
+            services.AddScoped<ILobbyContextAccessor, LobbyContextAccessor>();
 
             services.AddResponseCompression();
 
