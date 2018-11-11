@@ -1,7 +1,6 @@
 ﻿using System.Threading;
-using TopDownHeist.GameServer.Abstractions;
 
-namespace TopDownHeist.GameServer
+namespace TopDownHeist.GameServer.Lobby
 {
     internal class LobbyContextAccessor : ILobbyContextAccessor
     {

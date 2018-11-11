@@ -1,9 +1,8 @@
 ﻿using System;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using TopDownHeist.GameServer.Abstractions;
 
-namespace TopDownHeist.GameServer
+namespace TopDownHeist.GameServer.Lobby
 {
     internal class LobbyContext : ILobbyContext
     {
