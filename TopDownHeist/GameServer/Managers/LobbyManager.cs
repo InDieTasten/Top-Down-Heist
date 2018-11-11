@@ -1,13 +1,12 @@
-﻿using Microsoft.AspNetCore.SignalR;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-using SignalR;
-using System;
+﻿using System;
 using System.Collections.Concurrent;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.SignalR;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
+using SignalR;
 using TopDownHeist.GameServer.Abstractions;
 using TopDownHeist.GameServer.Exceptions;
 
@@ -16,16 +15,16 @@ namespace TopDownHeist.GameServer.Managers
     /// <summary>
     /// Class for joinging and leaving lobbys, and multiplexing incoming frames to corresponding simulations
     /// </summary>
-    class GameLobbyManager : IGameLobbyManager
+    internal class LobbyManager : ILobbyManager
     {
         private readonly IServiceScopeFactory _serviceScopeFactory;
-        private readonly ILogger<GameLobbyManager> _logger;
+        private readonly ILogger<LobbyManager> _logger;
         private readonly IHubContext<HeistHub> _heistHubContext;
-        private readonly ConcurrentDictionary<string, GameLobby> _lobbies = new ConcurrentDictionary<string, GameLobby>();
+        private readonly ConcurrentDictionary<string, LobbyContext> _lobbies = new ConcurrentDictionary<string, LobbyContext>();
 
-        public GameLobbyManager(
+        public LobbyManager(
             IServiceScopeFactory serviceScopeFactory,
-            ILogger<GameLobbyManager> logger,
+            ILogger<LobbyManager> logger,
             IHubContext<HeistHub> heistHubContext)
         {
             _serviceScopeFactory = serviceScopeFactory ?? throw new ArgumentNullException(nameof(serviceScopeFactory));
@@ -38,7 +37,7 @@ namespace TopDownHeist.GameServer.Managers
             return _lobbies.Keys.ToArray();
         }
 
-        public void CreateGameLobby(string lobbyName, string lobbyPassword)
+        public void CreateLobby(string lobbyName, string lobbyPassword)
         {
             if (string.IsNullOrEmpty(lobbyName))
             {
@@ -59,10 +58,11 @@ namespace TopDownHeist.GameServer.Managers
             {
                 using (var lobbyScope = _serviceScopeFactory.CreateScope())
                 {
-                    var newLobby = ActivatorUtilities.CreateInstance<GameLobby>(lobbyScope.ServiceProvider);
-
-                    newLobby.Name = lobbyName;
-                    newLobby.Password = lobbyPassword;
+                    var newLobby = new LobbyContext(lobbyScope.ServiceProvider)
+                    {
+                        Name = lobbyName,
+                        Password = lobbyPassword
+                    };
 
                     if (_lobbies.TryAdd(lobbyName, newLobby))
                     {
