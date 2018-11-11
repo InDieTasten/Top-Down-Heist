@@ -7,10 +7,9 @@ using Microsoft.AspNetCore.SignalR;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using SignalR;
-using TopDownHeist.GameServer.Abstractions;
 using TopDownHeist.GameServer.Exceptions;
 
-namespace TopDownHeist.GameServer.Managers
+namespace TopDownHeist.GameServer.Lobby
 {
     /// <summary>
     /// Class for joinging and leaving lobbys, and multiplexing incoming frames to corresponding simulations

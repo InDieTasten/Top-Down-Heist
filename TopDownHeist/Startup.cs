@@ -2,9 +2,7 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using SignalR;
-using TopDownHeist.GameServer;
-using TopDownHeist.GameServer.Abstractions;
-using TopDownHeist.GameServer.Managers;
+using TopDownHeist.GameServer.Lobby;
 
 namespace TopDownHeist.Server
 {

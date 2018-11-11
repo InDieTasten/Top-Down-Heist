@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.SignalR;
 using Microsoft.Extensions.Logging;
-using TopDownHeist.GameServer.Abstractions;
+using TopDownHeist.GameServer.Lobby;
 
 namespace SignalR
 {

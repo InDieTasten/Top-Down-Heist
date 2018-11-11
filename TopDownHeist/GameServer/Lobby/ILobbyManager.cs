@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 
-namespace TopDownHeist.GameServer.Abstractions
+namespace TopDownHeist.GameServer.Lobby
 {
     internal interface ILobbyManager
     {

@@ -1,4 +1,4 @@
-﻿namespace TopDownHeist.GameServer.Abstractions
+﻿namespace TopDownHeist.GameServer.Lobby
 {
     internal interface ILobbyContextAccessor
     {
