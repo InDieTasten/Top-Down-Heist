@@ -19,7 +19,7 @@ namespace TopDownHeist.GameServer
             _logger = LobbyServices.GetRequiredService<ILogger<LobbyContext>>();
         }
 
-        public void Run()
+        public void Host()
         {
             throw new NotImplementedException();
         }

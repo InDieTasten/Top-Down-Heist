@@ -68,7 +68,7 @@ namespace TopDownHeist.GameServer.Managers
 
                     if (_lobbies.TryAdd(lobbyName, newLobby))
                     {
-                        newLobby.Run();
+                        newLobby.Host();
                     }
                     else
                     {
