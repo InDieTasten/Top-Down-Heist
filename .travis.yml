@@ -1,7 +1,8 @@
 language: csharp
 solution: TopDownHeist.sln
 mono: none
-dotnet: 2.1.403
+dist: xenial
+dotnet: 2.2.101
 sudo: required
 
 services:
