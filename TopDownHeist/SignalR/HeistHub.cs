@@ -9,18 +9,18 @@ namespace SignalR
     internal class HeistHub : Hub
     {
         private readonly ILogger<HeistHub> _logger;
-        private readonly ILobbyManager _gameLobbyManager;
+        private readonly ILobbyManager _lobbyManager;
 
-        public HeistHub(ILogger<HeistHub> logger, ILobbyManager gameLobbyManager)
+        public HeistHub(ILogger<HeistHub> logger, ILobbyManager lobbyManager)
         {
             _logger = logger;
-            _gameLobbyManager = gameLobbyManager;
+            _lobbyManager = lobbyManager;
         }
 
 
         public async Task JoinGameServer(string lobbyName, string password)
         {
-            if (await _gameLobbyManager.TryConnectToLobby(Context.ConnectionId, lobbyName, password))
+            if (await _lobbyManager.TryConnectToLobby(Context.ConnectionId, lobbyName, password))
             {
                 _logger.LogInformation("Succesfully joined lobby");
                 await Clients.Client(Context.ConnectionId).SendAsync("joinLobby", true);

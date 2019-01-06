@@ -2,7 +2,7 @@
 
 namespace TopDownHeist.GameServer.Simulation.Base
 {
-    class GameEntity
+    class Entity
     {
         public Vector3 Position { get; set; }
     }

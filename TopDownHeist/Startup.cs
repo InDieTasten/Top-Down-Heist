@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using SignalR;
 using TopDownHeist.GameServer.Lobby;
+using TopDownHeist.GameServer.Simulation;
 
 namespace TopDownHeist.Server
 {
@@ -18,6 +19,8 @@ namespace TopDownHeist.Server
 
             services.AddSingleton<ILobbyManager, LobbyManager>();
             services.AddScoped<ILobbyContextAccessor, LobbyContextAccessor>();
+            services.AddScoped<ISimulationManager, SimulationManager>();
+            services.AddScoped<IEntityManager, EntityManager>();
 
             services.AddResponseCompression();
 
