@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.DependencyInjection;
 using SignalR;
 using TopDownHeist.GameServer.Lobby;
@@ -15,7 +16,8 @@ namespace TopDownHeist.Server
         {
             services.AddMvcCore()
                 .AddJsonFormatters()
-                .AddRazorViewEngine();
+                .AddRazorViewEngine()
+                .SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
             services.AddSingleton<ILobbyManager, LobbyManager>();
             services.AddScoped<ILobbyContextAccessor, LobbyContextAccessor>();
