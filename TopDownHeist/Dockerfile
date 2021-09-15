@@ -23,7 +23,7 @@ RUN npm run build
 RUN dotnet publish -c Release -o out
 
 # Build runtime image
-FROM microsoft/dotnet:2.2-aspnetcore-runtime AS runtime
+FROM microsoft/dotnet:3.0.0-preview2-runtime-deps-bionic AS runtime
 WORKDIR /app
 COPY --from=build /app/out .
 EXPOSE 80
